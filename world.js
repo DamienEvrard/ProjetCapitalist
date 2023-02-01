@@ -1,5 +1,5 @@
 module.exports = {
-    "name": "Nom du monde",
+    "name": "Loc Lac",
     "logo": "icones/logomonde.jpg",
     "money": 0,
     "score": 0,
@@ -37,15 +37,14 @@ module.exports = {
                     "ratio": 2,
                     "typeratio": "vitesse",
                     "unlocked": "false"
-                },
-                …
+                }
             ]
         },
         {
             "id": 2,
             "name": "Deuxième produit",
             "logo": "icones/deuxiemeproduit.jpg",
-        } …
+        }
     ],
     "allunlocks": [
         {
@@ -56,8 +55,7 @@ module.exports = {
             "ratio": 2,
             "typeratio": "gain",
             "unlocked": "false"
-        },
-        …
+        }
     ],
     "upgrades": [
         {
@@ -68,8 +66,7 @@ module.exports = {
             "ratio": 3,
             "typeratio": "gain",
             "unlocked": "false"
-        },
-        …
+        }
     ],
     "angelupgrades": [
         {
@@ -80,8 +77,7 @@ module.exports = {
             "ratio": 3,
             "typeratio": "gain",
             "unlocked": "false"
-        },
-        …
+        }
     ],
     "managers": [
         {
@@ -92,7 +88,6 @@ module.exports = {
             "ratio": 0,
             "typeratio": "gain",
             "unlocked": "false"
-        },
-        …
+        }
     ]
 };
