@@ -1,11 +1,9 @@
 const express = require('express');
-
+const fs = require("fs").promises;
 const { ApolloServer, gql } = require('apollo-server-express');
-
 const typeDefs = require("./schema");
 const resolvers = require("./resolvers");
 let world = require("./world");
-
 
 const server = new ApolloServer({ typeDefs, resolvers, context: async ({ req }) => ({
     world: world,
@@ -23,6 +21,7 @@ server.start().then( res => {
 
 async function readUserWorld(user) {
     try {
+        
         const data = await fs.readFile("userworlds/"+ user + "-world.json");
         return JSON.parse(data);
     }

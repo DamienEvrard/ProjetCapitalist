@@ -1,31 +1,64 @@
+const fs = require("fs").promises;
 module.exports = {
     Query: {
         getWorld(parent, args, context, info) {
-            saveWorld(context)
-            return context.world
+            saveWorld(context);
+            return context.world;
         }
     },
     Mutation: {
-        acheterQtProduit(id, quantite){
-            /*       Cf page 39 sujet
-            getproduitById(args.id)
-            if existe
-                for(int i=1;i<args.quantite;i++){}
-                    setMoney(getMoney-getproduitById(args.id).cout)
-                    setNextPriceProduct();
-                    setQteProduit(getQteProduit+1)
-                }
-            else
-                throw new Error(`Le produit avec l'id ${args.id} n'existe pas`)
-            */
-
+        acheterQtProduit(parent, args, context){
+            
+            let world = context.world;
+            let produit = world.products.find((p)=> p.id === args.id);
+            if(produit == undefined){
+                throw new Error(`Le produit avec l'id ${args.id} n'existe pas`);
+            }
+            let coutTTC=0;
+            let lastCout=0;
+            for(let i = 0;i<args.quantite;i++){
+                lastCout=produit.cout*produit.croissance
+                coutTTC+=lastCout;
+            }
+            if(world.money>=coutTTC){
+                produit.cout=lastCout;
+                world.money-=coutTTC;
+                produit.quantite+=args.quantite;
+            }else{
+                throw new Error(`Pas assez d'argent`);
+            }
+            saveWorld(context);
+            return produit;
                
         },
-        lancerProductionProduit(id){
+        lancerProductionProduit(parent, args, context){
+
+            let world = context.world;
+            let produit = world.products.find((p)=> p.id === args.id);
+            if(produit === undefined){
+                throw new Error(`Le produit avec l'id ${args.id} n'existe pas`);
+            }else{
+                produit.timeleft=produit.vitesse;
+                world.lastupdate=Date.now();
+            }
+            return produit;
 
         },
-        engagerManager(name){
+        engagerManager(parent, args, context){
+            let world = context.world;
+            let manager = world.managers.find((m)=> m.name === args.name);
+            let produit = world.products.find((p)=> p.id === manager.idcible);
+            if(manager === undefined){
+                throw new Error(`Le manager avec l'id ${args.name} n'existe pas`);
+            }else{
+                if(produit.quantite>=manager.seuil){
+                    produit.managerUnlocked=true;
+                    manager.unlock=true;
+                }
+            }
 
+            saveWorld();
+            return produit.palliers;
         }
     }
 };

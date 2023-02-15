@@ -1,7 +1,7 @@
 module.exports = {
     "name": "Loc Lac",
     "logo": "icones/logomonde.jpg",
-    "money": 0,
+    "money": 1000,
     "score": 0,
     "totalangels": 0,
     "activeangels": 0,
@@ -44,6 +44,13 @@ module.exports = {
             "id": 2,
             "name": "Deuxième produit",
             "logo": "icones/deuxiemeproduit.jpg",
+            "cout": 10,
+            "croissance": 1.18,
+            "revenu": 1,
+            "vitesse": 500,
+            "quantite": 1,
+            "timeleft": 0,
+            "managerUnlocked": false
         }
     ],
     "allunlocks": [
@@ -61,7 +68,7 @@ module.exports = {
         {
             "name": "Nom du premier upgrade",
             "logo": "icones/premierupgrade.jpg",
-            "seuil": 1e3,
+            "seuil": 3,
             "idcible": 1,
             "ratio": 3,
             "typeratio": "gain",
