@@ -19,7 +19,7 @@ module.exports = {
             "quantite": 1,
             "timeleft": 0,
             "managerUnlocked": false,
-            "palliers": [
+            "paliers": [
                 {
                     "name": "Nom du premier palier",
                     "logo": "icones/premierpalier.jpg",
@@ -27,7 +27,7 @@ module.exports = {
                     "idcible": 1,
                     "ratio": 2,
                     "typeratio": "vitesse",
-                    "unlocked": "false"
+                    "unlocked": false
                 },
                 {
                     "name": "Nom deuxième palier",
@@ -35,8 +35,8 @@ module.exports = {
                     "seuil": 75,
                     "idcible": 1,
                     "ratio": 2,
-                    "typeratio": "vitesse",
-                    "unlocked": "false"
+                    "typeratio": "gain",
+                    "unlocked": false
                 }
             ]
         },
@@ -50,7 +50,8 @@ module.exports = {
             "vitesse": 500,
             "quantite": 1,
             "timeleft": 0,
-            "managerUnlocked": false
+            "managerUnlocked": false,
+            "paliers": []
         }
     ],
     "allunlocks": [
@@ -61,7 +62,7 @@ module.exports = {
             "idcible": 0,
             "ratio": 2,
             "typeratio": "gain",
-            "unlocked": "false"
+            "unlocked": false
         }
     ],
     "upgrades": [
@@ -72,7 +73,7 @@ module.exports = {
             "idcible": 1,
             "ratio": 3,
             "typeratio": "gain",
-            "unlocked": "false"
+            "unlocked": false
         }
     ],
     "angelupgrades": [
@@ -83,7 +84,7 @@ module.exports = {
             "idcible": 0,
             "ratio": 3,
             "typeratio": "gain",
-            "unlocked": "false"
+            "unlocked": false
         }
     ],
     "managers": [
@@ -94,7 +95,7 @@ module.exports = {
             "idcible": 1,
             "ratio": 0,
             "typeratio": "gain",
-            "unlocked": "false"
+            "unlocked": false
         }
     ]
 };
