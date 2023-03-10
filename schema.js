@@ -10,7 +10,7 @@ module.exports = gql`
         logo: String
         seuil: Float
         idcible: Int
-        ratio: Int
+        ratio: Float
         typeratio: RatioType
         unlocked: Boolean
     }
