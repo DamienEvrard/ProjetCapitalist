@@ -13,16 +13,15 @@ module.exports = {
             
             let world = context.world;
             let produit = world.products.find((p)=> p.id === args.id);
-            
-            
 
             if(produit == undefined){
                 throw new Error(`Le produit avec l'id ${args.id} n'existe pas`);
             }
+            
             let coutTTC=0;
-            let lastCout=0;
+            let lastCout=produit.cout;
             for(let i = 0;i<args.quantite;i++){
-                lastCout=produit.cout*produit.croissance
+                lastCout=lastCout*produit.croissance
                 coutTTC+=lastCout;
             }
             if(world.money>=coutTTC){
@@ -260,10 +259,10 @@ function getBonus(produit, world){
 }
 
 function saveWorld(context) {
-    fs.writeFile("userworlds/" + context.user + "-world.json", JSON.stringify(context.world), err => {
+    fs.writeFile("../userworlds/" + context.user + "-world.json", JSON.stringify(context.world), err => {
         if (err) {
-            console.error(err)
-            throw new Error(`Erreur d'écriture du monde coté serveur`)
+            console.error(err);
+            throw new Error(`Erreur d'écriture du monde coté serveur`);
         }
     })
 }
